@@ -1,6 +1,7 @@
 #include "tracking.h"
 #include <iostream>
-#include "Dense"
+#include <eigen3/Eigen/Dense>
+#include <math.h>
 
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
@@ -72,11 +73,20 @@ void Tracking::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
   
   // TODO: YOUR CODE HERE
   // 1. Modify the F matrix so that the time is integrated
-  
+  kf_.F_ << 1, 0, dt, 0,
+            0, 1, 0, dt,
+            0, 0, 1, 0,
+            0, 0, 0, 1;
   // 2. Set the process covariance matrix Q
+  kf_.Q_ << pow(dt, 4)/4*noise_ax, 0, pow(dt, 3)/2*noise_ax, 0,
+            0, pow(dt, 4)/4*noise_ay, 0, pow(dt, 3)/2*noise_ay,
+            pow(dt, 3)/2*noise_ax, 0, pow(dt, 2)*noise_ax, 0,
+            0, pow(dt, 3)/2*noise_ay, 0, pow(dt, 2)*noise_ay;
   // 3. Call the Kalman Filter predict() function
+  kf_.Predict();
   // 4. Call the Kalman Filter update() function
   //      with the most recent raw measurements_
+  kf_.Update(measurement_pack.raw_measurements_);
   
   cout << "x_= " << kf_.x_ << endl;
   cout << "P_= " << kf_.P_ << endl;

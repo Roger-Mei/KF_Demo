@@ -1,7 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
-#include "Dense"
+#include <eigen3/Eigen/Dense>
 #include "measurement_package.h"
 #include "tracking.h"
 
@@ -23,11 +23,14 @@ int main() {
   vector<MeasurementPackage> measurement_pack_list;
 
   // hardcoded input file with laser and radar measurements
-  string in_file_name_ = "obj_pose-laser-radar-synthetic-input.txt";
-  ifstream in_file(in_file_name_.c_str(), ifstream::in);
+  // string in_file_name_ = "../data/obj_pose-laser-radar-synthetic-input.txt";
+  // ifstream in_file(in_file_name_.c_str(), ifstream::in);
+
+  ifstream in_file;
+  in_file.open("/home/rogermei/Desktop/Udacity/KF_Demo/data/obj_pose-laser-radar-synthetic-input.txt");
 
   if (!in_file.is_open()) {
-    cout << "Cannot open input file: " << in_file_name_ << endl;
+    cout << "Cannot open input file." << endl;
   }
 
   string line;
