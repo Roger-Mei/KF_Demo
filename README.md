@@ -5,7 +5,7 @@ This repo creates a demo for kalman filter which only utilize the laser data. A 
 
 ## Dependencies
 ---
-This demo needs to use Eigen library for cpp. For Installation instruction, please click [this link] (http://eigen.tuxfamily.org/index.php?title=Main_Page#Download).
+This demo needs to use Eigen library for cpp. For Installation instruction, please click [this link](http://eigen.tuxfamily.org/index.php?title=Main_Page#Download).
 
 ## Implementations
 ---
