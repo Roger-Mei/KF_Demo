@@ -53,7 +53,7 @@ Tracking::~Tracking() {
 // Process a single measurement
 void Tracking::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
   if (!is_initialized_) {
-    //cout << "Kalman Filter Initialization " << endl;
+    // cout << "Kalman Filter Initialization " << endl;
 
     // set the state with the initial location and zero velocity
     kf_.x_ << measurement_pack.raw_measurements_[0], 
@@ -70,7 +70,6 @@ void Tracking::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
   // dt - expressed in seconds
   float dt = (measurement_pack.timestamp_ - previous_timestamp_) / 1000000.0;
   previous_timestamp_ = measurement_pack.timestamp_;
-  
   // TODO: YOUR CODE HERE
   // 1. Modify the F matrix so that the time is integrated
   kf_.F_ << 1, 0, dt, 0,
@@ -78,6 +77,7 @@ void Tracking::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
             0, 0, 1, 0,
             0, 0, 0, 1;
   // 2. Set the process covariance matrix Q
+  kf_.Q_ = MatrixXd(4, 4);
   kf_.Q_ << pow(dt, 4)/4*noise_ax, 0, pow(dt, 3)/2*noise_ax, 0,
             0, pow(dt, 4)/4*noise_ay, 0, pow(dt, 3)/2*noise_ay,
             pow(dt, 3)/2*noise_ax, 0, pow(dt, 2)*noise_ax, 0,

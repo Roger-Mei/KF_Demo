@@ -22,16 +22,20 @@ int main() {
    */
   vector<MeasurementPackage> measurement_pack_list;
 
-  // hardcoded input file with laser and radar measurements
-  // string in_file_name_ = "../data/obj_pose-laser-radar-synthetic-input.txt";
+  // // hardcoded input file with laser and radar measurements
+  // string in_file_name_ = "/home/roger/Desktop/Udacity/KF_Demo/data/obj_pose-laser-radar-synthetic-input.txt";
   // ifstream in_file(in_file_name_.c_str(), ifstream::in);
 
   ifstream in_file;
   in_file.open("/home/rogermei/Desktop/Udacity/KF_Demo/data/obj_pose-laser-radar-synthetic-input.txt");
+  if(!in_file.is_open()) throw std::runtime_error("Could not open file!!!");
+  
+  // ifstream in_file;
+  // in_file.open("/home/roger/Desktop/Udacity/KF_Demo/data/obj_pose-laser-radar-synthetic-input.txt");
 
-  if (!in_file.is_open()) {
-    cout << "Cannot open input file." << endl;
-  }
+  // if (!in_file.is_open()) {
+  //   cout << "Cannot open input file." << endl;
+  // }
 
   string line;
   // set i to get only first 3 measurments
@@ -69,6 +73,8 @@ int main() {
 
   // call the ProcessingMeasurement() function for each measurement
   size_t N = measurement_pack_list.size();
+  cout << "size of measurement: " << N << endl;
+
   // start filtering from the second frame 
   // (the speed is unknown in the first frame)
   for (size_t k = 0; k < N; ++k) {

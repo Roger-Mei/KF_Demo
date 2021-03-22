@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/rogermei/Desktop/Udacity/KF_Demo/src/kalman_filter.h
+eigen3/Eigen/Dense
+-
+
+/home/rogermei/Desktop/Udacity/KF_Demo/src/measurement_package.h
+eigen3/Eigen/Dense
+-
+
+/home/rogermei/Desktop/Udacity/KF_Demo/src/tracking.cpp
+tracking.h
+/home/rogermei/Desktop/Udacity/KF_Demo/src/tracking.h
+iostream
+-
+eigen3/Eigen/Dense
+-
+math.h
+-
+
+/home/rogermei/Desktop/Udacity/KF_Demo/src/tracking.h
+vector
+-
+string
+-
+fstream
+-
+kalman_filter.h
+/home/rogermei/Desktop/Udacity/KF_Demo/src/kalman_filter.h
+measurement_package.h
+/home/rogermei/Desktop/Udacity/KF_Demo/src/measurement_package.h
+

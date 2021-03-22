@@ -1,0 +1,3 @@
+/home/rogermei/Desktop/Udacity/KF_Demo/build/CMakeFiles/rebuild_cache.dir
+/home/rogermei/Desktop/Udacity/KF_Demo/build/CMakeFiles/edit_cache.dir
+/home/rogermei/Desktop/Udacity/KF_Demo/build/CMakeFiles/KF.dir
